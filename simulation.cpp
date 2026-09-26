@@ -84,13 +84,36 @@ bool readYesNo(string prompt) {
         cout << "  Please type Y or N.\n";
     }
 }
-int main() {
-    showMenu();
-    int choice = readChoice("Enter your choice (1-4): ", 1, 4);
-    double gb = readPositiveNumber("Storage needed (GB): ");
-    bool portable = readYesNo("Portable? (Y/N): ");
 
-    cout << "You entered: " << choice << ", " << gb << " GB, "
-         << (portable ? "portable" : "not portable") << "\n";
+void recommend() {
+    cout << "\nRecommendation feature coming soon.\n";
+}
+
+void showRamac(double storageGB) {
+    cout << "\nRAMAC comparison for " << storageGB << " GB coming soon.\n";
+}
+int main() {
+    int choice;
+
+    do {
+        showMenu();
+        choice = readChoice("Enter your choice (1-4): ", 1, 4);
+
+        switch (choice) {
+            case 1:
+                recommend();
+                break;
+            case 2:
+                showPrices();
+                break;
+            case 3:
+                showRamac(readPositiveNumber("\nStorage to compare (GB): "));
+                break;
+            case 4:
+                cout << "\nThank you for using Storage Advisor. Goodbye!\n";
+                break;
+        }
+    } while (choice != 4);
+
     return 0;
 }
