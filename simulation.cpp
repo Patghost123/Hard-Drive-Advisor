@@ -86,7 +86,31 @@ bool readYesNo(string prompt) {
 }
 
 void recommend() {
-    cout << "\nRecommendation feature coming soon.\n";
+    cout << "\n--- Storage Recommendation ---\n";
+
+    // 1. Inputs
+    double storageGB = readPositiveNumber("Storage needed (GB): ");
+    double budget    = readPositiveNumber("Your budget (RM): ");
+
+    cout << "\nMain use:\n";
+    cout << "1. Study / documents\n";
+    cout << "2. Gaming\n";
+    cout << "3. Video editing\n";
+    cout << "4. Backup / archiving\n";
+    int use = readChoice("Choose (1-4): ", 1, 4);
+
+    bool portable = readYesNo("Do you need it to be portable? (Y/N): ");
+
+    // 2. Calculate costs
+    double hddCost = storageGB * HDD_PRICE;
+    double ssdCost = storageGB * SSD_PRICE;
+
+    // Temporary output to check the inputs and calculations
+    // (replaced by the real logic and result in commits 7 and 8)
+    cout << fixed << setprecision(2);
+    cout << "\n[TEST] Storage: " << storageGB << " GB, Budget: RM " << budget
+         << ", Use: " << use << ", Portable: " << (portable ? "Yes" : "No") << "\n";
+    cout << "[TEST] HDD cost: RM " << hddCost << ", SSD cost: RM " << ssdCost << "\n";
 }
 
 void showRamac(double storageGB) {
