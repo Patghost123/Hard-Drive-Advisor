@@ -149,11 +149,14 @@ void recommend() {
         }
     }
 
-    // Temporary output to check the logic
-    // (replaced by the full result display in commit 8)
+    // 4. Output
     cout << fixed << setprecision(2);
-    cout << "\n[TEST] Recommendation: " << advice << "\n";
-    cout << "[TEST] Estimated cost: RM " << cost << "\n";
+    cout << "\n--- Result ---\n";
+    cout << "Storage needed : " << storageGB << " GB\n";
+    cout << "Budget         : RM " << budget << "\n";
+    cout << "Recommendation : " << advice << "\n";
+    cout << "Estimated cost : RM " << cost << "\n";
+    cout << "(HDD would cost RM " << hddCost << ", SSD would cost RM " << ssdCost << ")\n";
 }
 
 void showRamac(double storageGB) {
