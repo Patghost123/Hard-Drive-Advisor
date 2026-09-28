@@ -105,12 +105,55 @@ void recommend() {
     double hddCost = storageGB * HDD_PRICE;
     double ssdCost = storageGB * SSD_PRICE;
 
-    // Temporary output to check the inputs and calculations
-    // (replaced by the real logic and result in commits 7 and 8)
+    // 3. Decide (if / else)
+    string advice;
+    double cost;
+
+    if (budget < hddCost) {
+        advice = "Your budget is too low. Reduce the storage or increase the budget.";
+        cost = hddCost;
+    } else if (use == 1) {                       // study
+        if (portable && budget >= ssdCost) {
+            advice = "SSD - small, light and shock-resistant.";
+            cost = ssdCost;
+        } else {
+            advice = "HDD - cheapest, and plenty for documents.";
+            cost = hddCost;
+        }
+    } else if (use == 2) {                       // gaming
+        if (budget >= ssdCost) {
+            advice = "SSD - faster game loading times.";
+            cost = ssdCost;
+        } else {
+            advice = "HDD - fits your budget (SSD is better if you can afford it).";
+            cost = hddCost;
+        }
+    } else if (use == 3) {                       // video editing
+        if (budget >= ssdCost + hddCost) {
+            advice = "BOTH - SSD for editing, HDD for storing finished videos.";
+            cost = ssdCost + hddCost;
+        } else if (budget >= ssdCost) {
+            advice = "SSD - fast for editing large video files.";
+            cost = ssdCost;
+        } else {
+            advice = "HDD - the most storage for your money.";
+            cost = hddCost;
+        }
+    } else {                                     // backup
+        if (portable && budget >= ssdCost) {
+            advice = "SSD - portable and durable for backups.";
+            cost = ssdCost;
+        } else {
+            advice = "HDD - best price per GB for large backups.";
+            cost = hddCost;
+        }
+    }
+
+    // Temporary output to check the logic
+    // (replaced by the full result display in commit 8)
     cout << fixed << setprecision(2);
-    cout << "\n[TEST] Storage: " << storageGB << " GB, Budget: RM " << budget
-         << ", Use: " << use << ", Portable: " << (portable ? "Yes" : "No") << "\n";
-    cout << "[TEST] HDD cost: RM " << hddCost << ", SSD cost: RM " << ssdCost << "\n";
+    cout << "\n[TEST] Recommendation: " << advice << "\n";
+    cout << "[TEST] Estimated cost: RM " << cost << "\n";
 }
 
 void showRamac(double storageGB) {
