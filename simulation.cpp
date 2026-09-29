@@ -85,6 +85,14 @@ bool readYesNo(string prompt) {
     }
 }
 
+void showRamac(double storageGB) {
+    double drives = storageGB * 1024 / RAMAC_MB;   // GB -> MB, then divide
+    cout << fixed << setprecision(0);
+    cout << "\n--- From RAMAC to today ---\n";
+    cout << "The first hard drive (IBM RAMAC, 1956) held only 5 MB.\n";
+    cout << "To store " << storageGB << " GB you would need about "
+         << drives << " RAMAC drives!\n";
+}
 void recommend() {
     cout << "\n--- Storage Recommendation ---\n";
 
@@ -157,11 +165,11 @@ void recommend() {
     cout << "Recommendation : " << advice << "\n";
     cout << "Estimated cost : RM " << cost << "\n";
     cout << "(HDD would cost RM " << hddCost << ", SSD would cost RM " << ssdCost << ")\n";
+
+     showRamac(storageGB);
 }
 
-void showRamac(double storageGB) {
-    cout << "\nRAMAC comparison for " << storageGB << " GB coming soon.\n";
-}
+
 int main() {
     int choice;
 
