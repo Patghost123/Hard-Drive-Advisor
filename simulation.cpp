@@ -35,11 +35,23 @@ void showPrices() {
     cout << "HDD : RM " << HDD_PRICE << " per GB\n";
     cout << "SSD : RM " << SSD_PRICE << " per GB\n";
 }
+
+// ---------- Input helpers (keep asking until the input is valid) ----------
+
+// If the input stream is closed (e.g. Ctrl+Z / Ctrl+D), stop instead of looping forever.
+void checkInputEnded() {
+    if (cin.eof()) {
+        cout << "\nInput ended. Goodbye!\n";
+        exit(0);
+    }
+}
+
 double readPositiveNumber(string prompt) {
     double value;
     while (true) {
         cout << prompt;
         cin >> value;
+        checkInputEnded();
         if (cin.fail()) {                
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -59,6 +71,7 @@ int readChoice(string prompt, int low, int high) {
     while (true) {
         cout << prompt;
         cin >> value;
+        checkInputEnded();
         if (cin.fail()) {
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -78,6 +91,7 @@ bool readYesNo(string prompt) {
     while (true) {
         cout << prompt;
         cin >> answer;
+        checkInputEnded();
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
         if (answer == 'y' || answer == 'Y') return true;
         if (answer == 'n' || answer == 'N') return false;
