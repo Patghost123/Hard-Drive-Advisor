@@ -18,6 +18,7 @@ const double SSD_PRICE = 0.35;
 
 // The first hard drive: IBM 350 RAMAC (1956) stored 5 MB.
 const double RAMAC_MB = 5.0;
+
 // ---------- Display functions ----------
 
 void showMenu() {
@@ -46,6 +47,7 @@ void checkInputEnded() {
     }
 }
 
+// Asks for a number greater than 0 (rejects letters, zero and negatives).
 double readPositiveNumber(string prompt) {
     double value;
     while (true) {
@@ -66,6 +68,7 @@ double readPositiveNumber(string prompt) {
     }
 }
 
+// Asks for a whole number between low and high.
 int readChoice(string prompt, int low, int high) {
     int value;
     while (true) {
@@ -86,6 +89,7 @@ int readChoice(string prompt, int low, int high) {
     }
 }
 
+// Asks a Y/N question and returns true for Y, false for N.
 bool readYesNo(string prompt) {
     char answer;
     while (true) {
@@ -107,6 +111,9 @@ void showRamac(double storageGB) {
     cout << "To store " << storageGB << " GB you would need about "
          << drives << " RAMAC drives!\n";
 }
+
+// ---------- Main feature: recommendation ----------
+
 void recommend() {
     cout << "\n--- Storage Recommendation ---\n";
 
@@ -180,9 +187,10 @@ void recommend() {
     cout << "Estimated cost : RM " << cost << "\n";
     cout << "(HDD would cost RM " << hddCost << ", SSD would cost RM " << ssdCost << ")\n";
 
-     showRamac(storageGB);
+    showRamac(storageGB);
 }
 
+// ---------- main ----------
 
 int main() {
     int choice;

@@ -48,3 +48,31 @@ HDD: RM 0.12/GB. SSD: RM 0.35/GB (course-project estimates, not live prices).
 Built over two weeks using regular Git commits.
 Week 1: planning, skeleton, menu, input validation.
 Week 2: recommendation logic, output, RAMAC comparison, testing.
+
+## 7. Testing
+
+Test cases run on the final program (price assumptions: HDD RM 0.12/GB, SSD RM 0.35/GB).
+
+| # | Storage (GB) | Budget (RM) | Use | Portable | Expected result |
+|---|---|---|---|---|---|
+| 1 | 500 | 40 | Any | Any | Budget too low, cost RM 60.00 |
+| 2 | 100 | 50 | Study | Y | SSD, RM 35.00 |
+| 3 | 100 | 50 | Study | N | HDD, RM 12.00 |
+| 4 | 500 | 200 | Gaming | N | SSD, RM 175.00 |
+| 5 | 500 | 100 | Gaming | N | HDD, RM 60.00 |
+| 6 | 1000 | 1000 | Video editing | N | BOTH, RM 470.00 |
+| 7 | 500 | 100 | Backup | Y | HDD, RM 60.00 |
+
+Menu option 3 with 500 GB shows about 102400 RAMAC drives.
+
+### Input validation tests
+
+| Input | Where | Expected result |
+|---|---|---|
+| `abc` | Any number or menu prompt | "Please enter a number / whole number", asks again |
+| `-5` or `0` | Storage or budget | "Please enter a number greater than 0", asks again |
+| `9` | Menu or use prompt | "Please choose between 1 and 4", asks again |
+| `maybe` | Portable question | "Please type Y or N", asks again |
+| Ctrl+Z then Enter | Any prompt | "Input ended. Goodbye!" and the program exits |
+
+All tests passed.
