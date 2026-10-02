@@ -63,7 +63,7 @@ Test cases run on the final program (price assumptions: HDD RM 0.12/GB, SSD RM 0
 | 6 | 1000 | 1000 | Video editing | N | BOTH, RM 470.00 |
 | 7 | 500 | 100 | Backup | Y | HDD, RM 60.00 |
 
-Menu option 3 with 500 GB shows about 102400 RAMAC drives.
+Menu option 3 with 500 GB shows about 136533 RAMAC drives.
 
 ### Input validation tests
 

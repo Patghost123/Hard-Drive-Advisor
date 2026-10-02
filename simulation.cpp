@@ -16,8 +16,8 @@ using namespace std;
 const double HDD_PRICE = 0.12;
 const double SSD_PRICE = 0.35;
 
-// The first hard drive: IBM 350 RAMAC (1956) stored 5 MB.
-const double RAMAC_MB = 5.0;
+// The first hard drive: IBM 350 RAMAC (1956) stored 3.75 MB.
+const double RAMAC_MB = 3.75;
 
 // ---------- Display functions ----------
 
@@ -107,7 +107,7 @@ void showRamac(double storageGB) {
     double drives = storageGB * 1024 / RAMAC_MB;   // GB -> MB, then divide
     cout << fixed << setprecision(0);
     cout << "\n--- From RAMAC to today ---\n";
-    cout << "The first hard drive (IBM RAMAC, 1956) held only 5 MB.\n";
+    cout << "The first hard drive (IBM RAMAC, 1956) held only 3.75 MB.\n";
     cout << "To store " << storageGB << " GB you would need about "
          << drives << " RAMAC drives!\n";
 }
